@@ -41,7 +41,7 @@ export default function UrlShortener() {
     console.log(longUrl)
     try {
 
-      const response = await fetch('https://arcube-developertask.onrender.com/api/v1.0.0/shorten', {
+      const response = await fetch('https://arcube-task-backend-three.vercel.app/api/v1.0.0/shorten', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
