@@ -5,8 +5,8 @@ import { jest } from '@jest/globals';
 
 jest.mock('../src/models/urlModel.js', () => ({
   save: jest.fn().mockResolvedValue({
-    longUrl: 'https://www.example.com/test',
-    shortId: 'abc123',
+    longUrl: 'https://www.google.com',
+    shortId: 'test',
   }),
   findOne: jest.fn(),
 }));
@@ -15,8 +15,8 @@ describe('URL Shortener API', () => {
   let testShortId;
 
   it('should shorten a valid URL', async () => {
-    const response = await request(app).post('/shorten').send({
-      longUrl: 'https://www.example.com/test',
+    const response = await request(app).post('/api/v1.0.0/shorten').send({
+      longUrl: 'https://www.google.com/test',
     });
 
     expect(response.status).toBe(200);
@@ -25,7 +25,7 @@ describe('URL Shortener API', () => {
   });
 
   it('should return an error for invalid URLs', async () => {
-    const response = await request(app).post('/shorten').send({
+    const response = await request(app).post('/api/v1.0.0/shorten').send({
       longUrl: 'invalid-url',
     });
     expect(response.status).toBe(400);
@@ -34,13 +34,13 @@ describe('URL Shortener API', () => {
 
   it('should redirect to the original URL', async () => {
     jest.spyOn(UrlModel, 'findOne').mockResolvedValue({
-      longUrl: 'https://www.example.com/test',
+      longUrl:'https://www.google.com/test',
       shortId: testShortId,
     });
 
     const response = await request(app).get(`/${testShortId}`);
     expect(response.status).toBe(302);
-    expect(response.headers.location).toBe('https://www.example.com/test');
+    expect(response.headers.location).toBe('https://www.google.com/test');
   });
 
   it('should return 404 for a non-existent short URL', async () => {

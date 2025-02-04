@@ -17,7 +17,7 @@ describe('End-to-End Tests for URL Shortener API', () => {
   it('should complete the full cycle of shortening and redirecting', async () => {
     const longUrl = 'https://www.google.com';
 
-    const shortenResponse = await request(app).post('/shorten').send({ longUrl });
+    const shortenResponse = await request(app).post('/api/v1.0.0/shorten').send({ longUrl });
     expect(shortenResponse.status).toBe(200);
     expect(shortenResponse.body).toHaveProperty('shortUrl');
 
