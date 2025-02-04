@@ -1,0 +1,28 @@
+.input {
+  height: 40px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.btnCustom {
+  background-color: #D72F59;  
+  color: white;              
+  border-radius: 8px;        
+
+  cursor: pointer;           
+  transition: background-color 0.3s; 
+  border: none;
+  height: 40px; 
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  width: 150px;
+}
+
+.btnCustom:disabled {
+  background-color: #ccc; 
+  cursor: not-allowed;
+}
+.loading {
+  background-color: #aaa;
+}

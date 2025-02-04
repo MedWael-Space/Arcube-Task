@@ -1,0 +1,25 @@
+{
+  "name": "backend-app",
+  "version": "1.0.0",
+  "description": "URL Shortener App",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "author": "Samti Mohamed Wael",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.3.4",
+    "nanoid": "^5.0.9",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
