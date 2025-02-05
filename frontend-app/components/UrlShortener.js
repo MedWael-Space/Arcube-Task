@@ -8,25 +8,28 @@ export default function UrlShortener() {
   const [isValidUrl, setIsValidUrl] = useState(false); 
   const [isLoading, setIsLoading] = useState(false);
 
+
   const handleChange = (e) => {
     const url = e.target.value;
     setLongUrl(url);
-
-    // URL validation
-    const urlPattern = /^(https?:\/\/[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}.*|www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}.*)$/;
+  
+    
+    const urlPattern = /^(https?:\/\/[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}.*)$/;
+    
     if (urlPattern.test(url)) {
       setIsValidUrl(true);
       setError("");
     } else {
       setIsValidUrl(false);
-      setError("Please enter a valid URL (e.g., http://www.example.com or www.example.com).");
+      setError("Please enter a valid URL that starts with http:// or https:// (e.g., https://example.com).");
     }
-
+  
     if (url === "") {
       setShortenedUrl("");
       setError("");
     }
   };
+  
 
 
   const handleSubmit = async (e) => {
@@ -38,7 +41,6 @@ export default function UrlShortener() {
     }
 
     setIsLoading(true);
-    console.log(longUrl)
     try {
 
       const response = await fetch('https://arcube-task-backend-three.vercel.app/api/v1.0.0/shorten', {
